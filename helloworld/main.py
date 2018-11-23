@@ -7,7 +7,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 def main():
-    print(tf.__version__)
+    print("Hello, TensorFlow {}!".format(tf.__version__))
 
 if __name__ == "__main__":
     main()
