@@ -13,7 +13,17 @@ def main():
     (train_images, train_labels), (test_images, test_labels) = fashion_mnist.load_data()
 
     print("load_data finish!!")
+    
+    class_names = ['T-shirt/top', 'Trouser', 'Pullover', 'Dress', 'Coat', 
+               'Sandal', 'Shirt', 'Sneaker', 'Bag', 'Ankle boot']
 
+    plt.figure()
+    plt.imshow(train_images[0])
+    plt.colorbar()
+    plt.grid(False)
+    plt.show()
+
+    print("----- finish!! -----")
 
 if __name__ == "__main__":
     main()
