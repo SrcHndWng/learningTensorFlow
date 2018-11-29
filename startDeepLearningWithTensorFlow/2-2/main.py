@@ -1,6 +1,6 @@
 import tensorflow as tf
 
-def main():
+def create_graph():
     a = tf.constant(3, name='const1')
     b = tf.Variable(0, name="val1")
     add = tf.add(a, b)
@@ -8,6 +8,10 @@ def main():
     assign = tf.assign(b, add)
     c = tf.placeholder(tf.int32, name='input')
     mul = tf.multiply(assign, c)
+    return c, mul
+
+def main():
+    c, mul = create_graph()
 
     init = tf.global_variables_initializer()
 
