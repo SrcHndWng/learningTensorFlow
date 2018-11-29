@@ -1,13 +1,7 @@
 from tensorflow.examples.tutorials.mnist import input_data
 import tensorflow as tf
 
-def main():
-    # データ取得
-    mnist = input_data.read_data_sets("data/", one_hot=True)
-    train_images, train_labels = mnist.train.next_batch(60)
-    test_images = mnist.test.images
-    test_labels = mnist.test.labels
-
+def create_graph():
     # 入力データを定義
     x = tf.placeholder(tf.float32, [None, 784])
 
@@ -32,7 +26,13 @@ def main():
     correct = tf.equal(tf.argmax(out, 1), tf.argmax(y, 1))
     accuracy = tf.reduce_mean(tf.cast(correct, tf.float32))
 
-    # 初期化
+    return x, y, train_step, accuracy
+
+def main():
+    mnist = input_data.read_data_sets("data/", one_hot=True)
+
+    x, y, train_step, accuracy = create_graph()
+
     init = tf.global_variables_initializer()
 
     with tf.Session() as sess:
